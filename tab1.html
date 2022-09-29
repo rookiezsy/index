@@ -1,0 +1,103 @@
+<!--
+ * @Author: rookiezsy 2425708330@qq.com
+ * @Date: 2022-09-23 17:48:01
+ * @LastEditors: rookiezsy 2425708330@qq.com
+ * @LastEditTime: 2022-09-23 18:06:56
+ * @FilePath: \个人网页\tab1.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>当前要事</title>
+    <meta
+    name="description"
+    content="记录当前要事"
+    />
+    <style>
+        body{
+            margin: 0;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            height: 100vh;
+            background-image:url("zsy.png");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        .box{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+        #shuRuKuang{
+            border: 0;
+            border-bottom: 2px solid rgb(17, 1, 1);
+            padding: 4px 2px;
+            display: block;
+            background-color: 0;
+            line-height:1.5;
+            outline: none;
+            text-align: center;
+            transition: border-color 0.2s ease-in-out;
+            border-radius: 0;
+            color: rgb(17, 1, 1);
+            font-size: 2rem;
+            max-width: 90%;
+        
+        }
+        #anNiu{
+            margin-left: -50px;
+            margin-right: 10px;
+            color: #ccc;
+            border-radius: 50%;
+            height: 40px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+        input::placeholder{
+            color: #ccc;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input placeholder="最重要的事？" id="shuRuKuang" />
+        <span id="anNiu" onclick="change()">√</span>
+    </div>
+    <script>
+        let youShi=false;
+        function change(){
+            let anNiu= document.getElementById("anNiu");
+            let shuRuKuang=document.getElementById("shuRuKuang");
+            if(youShi){
+                youShi=false;
+                anNiu.innerText="√";
+                shuRuKuang.style.borderBottom="#fff";
+                shuRuKuang.value="";
+                shuRuKuang.readOnly=flase;
+            }else{
+                youShi=true;
+                anNiu.innerText="×";
+                shuRuKuang.style.borderBottom="transparent";
+                shuRuKuang.readOnly=true;
+            }
+        }
+        let data=window.localStorage.getItem("shi");
+        if(data){
+            document.getElementById("shuRuKuang").value=data;
+            change();
+        }
+    </script>
+
+    
+</body>
+</html>
